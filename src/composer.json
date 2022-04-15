@@ -1,0 +1,18 @@
+{
+    "require": {
+        "php-ai/php-ml":"dev-test",
+        "ext-simplexml": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "minimum-stability": "dev",
+    "repositories": {
+        "php-ai/php-ml": {
+            "type": "vcs",
+            "url": "https://github.com/IwakamiYuki/php-ml"
+        }
+    }
+}

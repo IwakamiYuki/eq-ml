@@ -1,0 +1,95 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "f02648755811b585ee1b93999394a6bb",
+    "packages": [
+        {
+            "name": "php-ai/php-ml",
+            "version": "dev-test",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/IwakamiYuki/php-ml.git",
+                "reference": "35ef1eb5e8ea66a3e8bc4352eda546da331d2ac1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/IwakamiYuki/php-ml/zipball/35ef1eb5e8ea66a3e8bc4352eda546da331d2ac1",
+                "reference": "35ef1eb5e8ea66a3e8bc4352eda546da331d2ac1",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2|^8.0"
+            },
+            "require-dev": {
+                "phpbench/phpbench": "^0.16.0",
+                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan-phpunit": "^0.12",
+                "phpstan/phpstan-strict-rules": "^0.12",
+                "phpunit/phpunit": "^8.0",
+                "symplify/easy-coding-standard": "^6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Phpml\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Phpml\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "check-cs": [
+                    "vendor/bin/ecs check src tests bin"
+                ],
+                "fix-cs": [
+                    "vendor/bin/ecs check src tests bin --fix"
+                ],
+                "phpstan": [
+                    "vendor/bin/phpstan.phar analyse src tests bin --level max --configuration phpstan.neon"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Arkadiusz Kondas",
+                    "email": "arkadiusz.kondas@gmail.com"
+                }
+            ],
+            "description": "PHP-ML - Machine Learning library for PHP",
+            "homepage": "https://github.com/php-ai/php-ml",
+            "keywords": [
+                "artificial intelligence",
+                "computational learning theory",
+                "data science",
+                "feature extraction",
+                "machine learning",
+                "neural network",
+                "pattern recognition"
+            ],
+            "support": {
+                "source": "https://github.com/IwakamiYuki/php-ml/tree/test"
+            },
+            "time": "2022-04-14T13:20:20+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "php-ai/php-ml": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "ext-simplexml": "*"
+    },
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
+}
