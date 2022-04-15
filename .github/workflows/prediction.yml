@@ -1,0 +1,44 @@
+name: prediction
+
+on:
+  schedule:
+    - cron: "59 15 * * *"
+  workflow_dispatch:
+
+jobs:
+  prediction_1:
+    runs-on: ubuntu-latest
+    outputs:
+      prediction_1: ${{ steps.php.outputs.test }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Preprocessing
+        run: |
+          cd src
+          composer install
+      - name: Run PHP
+        id: php
+        run: |
+          php src/ml.php 1
+  prediction_2:
+    runs-on: ubuntu-latest
+    outputs:
+      prediction_2: ${{ steps.php.outputs.test }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Preprocessing
+        run: |
+          cd src
+          composer install
+      - name: Run PHP
+        id: php
+        run: |
+          php src/ml.php 2
+
+  result:
+    runs-on: ubuntu-latest
+    needs: [prediction_1, prediction_2]
+    steps:
+      - name: output
+        run: |
+          echo ${{needs.prediction_1.outputs.prediction_1}} ${{needs.prediction_2.outputs.prediction_2}}
