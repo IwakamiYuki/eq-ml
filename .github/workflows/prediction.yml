@@ -41,4 +41,8 @@ jobs:
     steps:
       - name: output
         run: |
-          echo ${{needs.prediction_1.outputs.php}} ${{needs.prediction_2.outputs.php}}
+          cat << 'EOF' > result.txt
+          ${{needs.prediction_1.outputs.php}}
+          ${{needs.prediction_2.outputs.php}}
+          EOF
+          cat result.txt
