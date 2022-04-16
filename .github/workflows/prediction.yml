@@ -9,7 +9,7 @@ jobs:
   prediction_1:
     runs-on: ubuntu-latest
     outputs:
-      prediction_1: ${{ steps.php.outputs.test }}
+      php: ${{ steps.php.outputs.test }}
     steps:
       - uses: actions/checkout@v3
       - name: Preprocessing
@@ -19,11 +19,11 @@ jobs:
       - name: Run PHP
         id: php
         run: |
-          php src/ml.php 1
+          php src/ml.php 7
   prediction_2:
     runs-on: ubuntu-latest
     outputs:
-      prediction_2: ${{ steps.php.outputs.test }}
+      php: ${{ steps.php.outputs.test }}
     steps:
       - uses: actions/checkout@v3
       - name: Preprocessing
@@ -33,7 +33,7 @@ jobs:
       - name: Run PHP
         id: php
         run: |
-          php src/ml.php 2
+          php src/ml.php 8
 
   result:
     runs-on: ubuntu-latest
@@ -41,4 +41,4 @@ jobs:
     steps:
       - name: output
         run: |
-          echo ${{needs.prediction_1.outputs.prediction_1}} ${{needs.prediction_2.outputs.prediction_2}}
+          echo ${{needs.prediction_1.outputs.php}} ${{needs.prediction_2.outputs.php}}
