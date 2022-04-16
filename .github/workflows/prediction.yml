@@ -41,6 +41,10 @@ jobs:
     steps:
       - name: output
         run: |
+          echo ${{needs.prediction_1.outputs.php}} ${{needs.prediction_2.outputs.php}} > result.txt
+          echo '======'
+          cat result.txt
+          
           cat << EOF > result.txt
           ${{needs.prediction_1.outputs.php}}
           ${{needs.prediction_2.outputs.php}}
