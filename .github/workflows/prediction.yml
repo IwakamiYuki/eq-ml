@@ -109,6 +109,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: [prediction_5, prediction_6, prediction_7]
     steps:
+      - uses: actions/checkout@v3
+      - uses: fregante/setup-git-user@v1
       - name: output
         run: |
           cat << 'EOF' > data/log/`date +%Y%m%d`.csv
@@ -123,8 +125,6 @@ jobs:
           cat data/log/`date +%Y%m%d`.csv
           ls -la data/
           ls -la data/log/
-      - uses: actions/checkout@v3
-      - uses: fregante/setup-git-user@v1
       - name: git push
         run: |
           git add data/log/`date +%Y%m%d`.csv
