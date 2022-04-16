@@ -20,6 +20,7 @@ jobs:
         id: php
         run: |
           php src/ml.php 7
+          echo "::set-output name=test::hello"
   prediction_2:
     runs-on: ubuntu-latest
     outputs:
@@ -34,6 +35,7 @@ jobs:
         id: php
         run: |
           php src/ml.php 8
+          echo "::set-output name=test::world"
 
   result:
     runs-on: ubuntu-latest
