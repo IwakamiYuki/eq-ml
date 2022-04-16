@@ -19,7 +19,7 @@ jobs:
       - name: Run PHP
         id: php
         run: |
-          php src/ml.php 7
+          php src/ml.php 1
   prediction_2:
     runs-on: ubuntu-latest
     outputs:
@@ -33,7 +33,77 @@ jobs:
       - name: Run PHP
         id: php
         run: |
-          php src/ml.php 8
+          php src/ml.php 2
+  prediction_3:
+    runs-on: ubuntu-latest
+    outputs:
+      php: ${{ steps.php.outputs.result }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Preprocessing
+        run: |
+          cd src
+          composer install
+      - name: Run PHP
+        id: php
+        run: |
+          php src/ml.php 3
+  prediction_4:
+    runs-on: ubuntu-latest
+    outputs:
+      php: ${{ steps.php.outputs.result }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Preprocessing
+        run: |
+          cd src
+          composer install
+      - name: Run PHP
+        id: php
+        run: |
+          php src/ml.php 4
+  prediction_5:
+    runs-on: ubuntu-latest
+    outputs:
+      php: ${{ steps.php.outputs.result }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Preprocessing
+        run: |
+          cd src
+          composer install
+      - name: Run PHP
+        id: php
+        run: |
+          php src/ml.php 5
+  prediction_6:
+    runs-on: ubuntu-latest
+    outputs:
+      php: ${{ steps.php.outputs.result }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Preprocessing
+        run: |
+          cd src
+          composer install
+      - name: Run PHP
+        id: php
+        run: |
+          php src/ml.php 6
+  prediction_7:
+    runs-on: ubuntu-latest
+    outputs:
+      php: ${{ steps.php.outputs.result }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Preprocessing
+        run: |
+          cd src
+          composer install
+      - name: Run PHP
+        id: php
+        run: |
+          php src/ml.php 7
 
   result:
     runs-on: ubuntu-latest
@@ -42,6 +112,6 @@ jobs:
       - name: output
         run: |
           cat << 'EOF' > result.txt
-          ${{needs.prediction_1.outputs.php}}$${{needs.prediction_2.outputs.php}}
+          ${{needs.prediction_1.outputs.php}}${{needs.prediction_2.outputs.php}}${{needs.prediction_3.outputs.php}}${{needs.prediction_4.outputs.php}}${{needs.prediction_5.outputs.php}}${{needs.prediction_6.outputs.php}}${{needs.prediction_7.outputs.php}}
           EOF
           cat result.txt
