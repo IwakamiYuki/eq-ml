@@ -9,7 +9,7 @@ jobs:
   prediction_1:
     runs-on: ubuntu-latest
     outputs:
-      php: ${{ steps.php.outputs.test }}
+      php: ${{ steps.php.outputs.result }}
     steps:
       - uses: actions/checkout@v3
       - name: Preprocessing
@@ -20,11 +20,10 @@ jobs:
         id: php
         run: |
           php src/ml.php 7
-          echo "::set-output name=test::hello"
   prediction_2:
     runs-on: ubuntu-latest
     outputs:
-      php: ${{ steps.php.outputs.test }}
+      php: ${{ steps.php.outputs.result }}
     steps:
       - uses: actions/checkout@v3
       - name: Preprocessing
@@ -35,7 +34,6 @@ jobs:
         id: php
         run: |
           php src/ml.php 8
-          echo "::set-output name=test::world"
 
   result:
     runs-on: ubuntu-latest

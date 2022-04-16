@@ -34,7 +34,7 @@ for ($i = 0; $i < $loop_count; $i++) {
 
     // predict test
     $result = $neural_network->predict($sample_end_on);
-    echo $train_target_on->format('Y-m-d') . ',' . $result . PHP_EOL;
+    echo '::set-output name=result::' . $train_target_on->format('Y-m-d') . ',' . $result . PHP_EOL;
     if ($result === '1') {
         $pos_count++;
     }
