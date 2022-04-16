@@ -39,4 +39,4 @@ for ($i = 0; $i < $loop_count; $i++) {
         $pos_count++;
     }
 }
-echo '::set-output name=result::' . $pos_count/$loop_count*100 . PHP_EOL;
+echo '::set-output name=result::' . $train_target_on->format('Y-m-d') . ','. $pos_count/$loop_count . PHP_EOL;
