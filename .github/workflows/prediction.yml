@@ -2,7 +2,7 @@ name: prediction
 
 on:
   schedule:
-    - cron: "59 15 * * *"
+    - cron: "59 16 * * *"
   workflow_dispatch:
 
 jobs:
