@@ -111,7 +111,7 @@ jobs:
     steps:
       - name: output
         run: |
-          cat << 'EOF' > result.csv
+          cat << 'EOF' > data/log/`date +%Y%m%d`.csv
           ${{needs.prediction_1.outputs.php}}
           ${{needs.prediction_2.outputs.php}}
           ${{needs.prediction_3.outputs.php}}
@@ -120,4 +120,13 @@ jobs:
           ${{needs.prediction_6.outputs.php}}
           ${{needs.prediction_7.outputs.php}}
           EOF
-          cat result.csv
+          cat data/log/`date +%Y%m%d`.csv
+          ls -la data/
+          ls -la data/log/
+      - uses: actions/checkout@v3
+      - uses: fregante/setup-git-user@v1
+      - name: git push
+        run: |
+          git add data/log/`date +%Y%m%d`.csv
+          git commit -m "add `date +%Y%m%d`.csv"
+          git push origin HEAD
