@@ -107,11 +107,12 @@ jobs:
 
   result:
     runs-on: ubuntu-latest
-    needs: [prediction_1, prediction_2, prediction_3, prediction_4, prediction_5, prediction_6, prediction_7]
+    needs: [prediction_5, prediction_6, prediction_7]
     steps:
       - name: output
         run: |
-          cat << 'EOF' > result.txt
+          cat << 'EOF' > result.csv
           ${{needs.prediction_1.outputs.php}}${{needs.prediction_2.outputs.php}}${{needs.prediction_3.outputs.php}}${{needs.prediction_4.outputs.php}}${{needs.prediction_5.outputs.php}}${{needs.prediction_6.outputs.php}}${{needs.prediction_7.outputs.php}}
           EOF
-          cat result.txt
+          cat result.csv | sed -e 's/\$/\r/g'> result.csv
+          cat result.csv
