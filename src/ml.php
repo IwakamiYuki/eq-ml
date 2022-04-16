@@ -24,6 +24,7 @@ $data_set = $preprocessor->execute();
 
 $pos_count = 0;
 $loop_count = 100;
+echo '::set-output name=result::';
 for ($i = 0; $i < $loop_count; $i++) {
     // train
     $neural_network = new NeuralNetwork($data_set, $days_later);
@@ -34,9 +35,9 @@ for ($i = 0; $i < $loop_count; $i++) {
 
     // predict test
     $result = $neural_network->predict($sample_end_on);
-    echo '::set-output name=result::' . $train_target_on->format('Y-m-d') . ',' . $result . PHP_EOL;
+    echo $train_target_on->format('Y-m-d') . ',' . $result . '\n';
     if ($result === '1') {
         $pos_count++;
     }
 }
-echo $pos_count/$loop_count*100 . '%' . PHP_EOL;
+echo PHP_EOL . $pos_count/$loop_count*100 . '%' . PHP_EOL;
