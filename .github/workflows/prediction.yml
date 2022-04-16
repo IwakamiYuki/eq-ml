@@ -112,7 +112,12 @@ jobs:
       - name: output
         run: |
           cat << 'EOF' > result.csv
-          ${{needs.prediction_1.outputs.php}}${{needs.prediction_2.outputs.php}}${{needs.prediction_3.outputs.php}}${{needs.prediction_4.outputs.php}}${{needs.prediction_5.outputs.php}}${{needs.prediction_6.outputs.php}}${{needs.prediction_7.outputs.php}}
+          ${{needs.prediction_1.outputs.php}}
+          ${{needs.prediction_2.outputs.php}}
+          ${{needs.prediction_3.outputs.php}}
+          ${{needs.prediction_4.outputs.php}}
+          ${{needs.prediction_5.outputs.php}}
+          ${{needs.prediction_6.outputs.php}}
+          ${{needs.prediction_7.outputs.php}}
           EOF
-          cat result.csv | sed -e 's/\$/\n/g'> result.csv
           cat result.csv
