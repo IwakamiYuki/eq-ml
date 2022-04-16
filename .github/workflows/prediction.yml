@@ -7,7 +7,7 @@ on:
 
 jobs:
   prediction_1:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     outputs:
       php: ${{ steps.php.outputs.result }}
     steps:
