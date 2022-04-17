@@ -9,7 +9,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 // 何日後の予測をするか(基本的に1日後以降なのでデフォルト値に1を設定)
 $days_later = $argv[1] ?? 1;
 
-$sample_start_on = new DateTime('2022-03-21');
+$sample_start_on = new DateTime('2022-02-28');
 // 実行タイミングの前日までを学習対象としたいが、GitHub Actionsの実行時間が日付が変わった直後の夜中を想定しているので+1dayしておく
 $sample_end_on = (new DateTime())->modify('-1 day')->modify('+1 day');
 
